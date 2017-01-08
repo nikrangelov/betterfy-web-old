@@ -14,6 +14,8 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("/api")
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
-        register(TestController.class);
+        //register(TestController.class);
+
+        packages("com.betterfy.controller");
     }
 }

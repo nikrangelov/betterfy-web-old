@@ -14,12 +14,13 @@ import javax.ws.rs.Produces;
  */
 
 @Component
-@Path("/secured")
+@Path("/test")
 public class TestController {
+
     @GET
     @Produces("application/json")
-    @Path("/test")
-    public String test() {
+    @Path("/free")
+    public String testFree() {
         System.out.println("controller");
         User user = new User("Ivan", "Rangelov");
 
@@ -33,6 +34,13 @@ public class TestController {
         //return "Jersey: Up and Running!";
     }
 
+    @GET
+    @Produces("application/json")
+    @Path("/secured")
+    public String testSecured() {
+        System.out.println("Secured");
+        return "OK it is secured!";
+    }
 
     @Autowired
     private UserRepository userRepository;
