@@ -14,11 +14,13 @@ import javax.ws.rs.Produces;
  */
 
 @Component
-@Path("/test")
+@Path("/secured")
 public class TestController {
     @GET
     @Produces("application/json")
+    @Path("/test")
     public String test() {
+        System.out.println("controller");
         User user = new User("Ivan", "Rangelov");
 
         try {
