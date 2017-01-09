@@ -7,6 +7,7 @@ package com.betterfy.filter;
 
 import java.io.IOException;
 
+import javax.annotation.Priority;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -15,6 +16,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Priorities;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
@@ -22,6 +24,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Priority(Priorities.AUTHENTICATION)
 public class SecurityFilter implements Filter {
 
     public static final String USER_ID_HEADER = "USER_ID";
@@ -32,7 +35,7 @@ public class SecurityFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse) res;
-        String authToken = "Token";
+        String authToken = null;
 
         String requestedUrl = request.getRequestURI().toString();
         if(requestedUrl.contains(SECURED_URL_PREFIX)){
@@ -53,7 +56,7 @@ public class SecurityFilter implements Filter {
 
     private boolean isTokenValid(String token) {
 
-        return false;
+        return true;
     }
 
     @Override
