@@ -21,27 +21,27 @@ public class Authentication {
     @Consumes("application/json")
     public Response authenticateUser(Credentials credentials){
 
-        String username = credentials.getUsername();
+        String email = credentials.getEmail();
         String password = credentials.getPassword();
         String token = null;
 
-        if(authenticate(username, password)){
-            token = issueToken(username);
+        if(authenticate(email, password)){
+            token = issueToken(email);
             return Response.ok(token).build();
         }
 
         return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 
-    private boolean authenticate(String username, String password){
-        if(username.equals("niki") && password.equals("miki")){
+    private boolean authenticate(String email, String password){
+        if(email.equals("niki") && password.equals("miki")){
             return true;
         }else{
             return false;
         }
     }
 
-    private String issueToken(String username){
+    private String issueToken(String email){
         final String token = UUID.randomUUID().toString().replaceAll("-", "");
         // Associate with user;
         return token;
