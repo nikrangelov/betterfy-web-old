@@ -4,6 +4,7 @@ import com.betterfy.entity.Credentials;
 import com.betterfy.entity.RegistrationInformation;
 import com.betterfy.entity.User;
 import com.betterfy.repository.UserRepository;
+import com.betterfy.service.UserService;
 import com.google.common.hash.Hashing;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -37,11 +38,11 @@ public class Registration {
 
         User user = new User(firstName, lastName, email, hashedPassword);
 
-
+        boolean ok = UserService.createUser(user);
 
         // register the user to the database;
 
-        return Response.ok("New user registered").build();
+        return Response.ok("New user registered" + ok).build();
     }
 
 
