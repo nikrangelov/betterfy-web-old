@@ -2,7 +2,10 @@ package com.betterfy.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by nik on 1/5/17.
@@ -27,6 +30,9 @@ public class User {
 
     @NotNull
     private String password;
+
+
+    //private Map<String, Date> tokens = new HashMap<String, Date>();
 
     public User() {
     }
@@ -62,6 +68,30 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    /*
+    public Map<String, Date> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(Map<String, Date> tokens) {
+        this.tokens = tokens;
+    }
+    */
     @Override
     public String toString() {
         return "User{" +
